@@ -1,0 +1,29 @@
+cloud:
+  aws:
+    credentials:
+      accessKey: AKIAYRBRTDFWPIARWHVW
+      secretKey: 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
+    region:
+      static: eu-west-1
+    stack:
+      auto: false
+sqs:
+  inbound:
+    name: my-sqs-fifo.fifo
+    error-queue:
+      name: my-sqs-dlq.fifo
+  outbound:
+    uri: https://sqs.eu-west-1.amazonaws.com/586367048044/my-sqs-fifo.fifo
+resilience4j.ratelimiter:
+  configs:
+    default:
+      limitForPeriod: 3
+      limitRefreshPeriod: 5s
+      timeoutDuration: 100ms
+    backendAConfig:
+      limitForPeriod: 1
+      limitRefreshPeriod: 5s
+      timeoutDuration: 100ms
+  instances:
+    backendA:
+      baseConfig: backendAConfig

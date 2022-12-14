@@ -1,0 +1,33 @@
+# Q42i19Uy5iJ0KqagkUngtAPCpwOmHJd5cUvxIchP
+# ENC(7S71w/PkX8/385Ihrbe1fM4uldtSc83xIlLnkZjg81CzvuaXUJIbE8IIgbu+z8F6aEtoDaJbczk=)
+# sqs-secret
+resilience4j.ratelimiter:
+  configs:
+    default:
+      limitForPeriod: 15
+      limitRefreshPeriod: 1s
+      timeoutDuration: 100ms
+    backendAConfig:
+      limitForPeriod: 5
+      limitRefreshPeriod: 1s
+      timeoutDuration: 100ms
+  instances:
+    backendA:
+      baseConfig: backendAConfig
+cloud:
+  aws:
+    credentials:
+      accessKey: AKIAYRBRTDFWPIARWHVW
+      secretKey: ENC(7S71w/PkX8/385Ihrbe1fM4uldtSc83xIlLnkZjg81CzvuaXUJIbE8IIgbu+z8F6aEtoDaJbczk=)
+    region:
+      static: eu-west-1
+    stack:
+      auto: false
+sqs:
+  inbound:
+    name: my-sqs-fifo.fifo
+    error-queue:
+      name: my-sqs-dlq.fifo
+  outbound:
+    uri: https://sqs.eu-west-1.amazonaws.com/586367048044/my-sqs-fifo.fifo
+
