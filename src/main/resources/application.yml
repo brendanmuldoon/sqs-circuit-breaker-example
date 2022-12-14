@@ -1,6 +1,3 @@
-# Q42i19Uy5iJ0KqagkUngtAPCpwOmHJd5cUvxIchP
-# ENC(7S71w/PkX8/385Ihrbe1fM4uldtSc83xIlLnkZjg81CzvuaXUJIbE8IIgbu+z8F6aEtoDaJbczk=)
-# sqs-secret
 resilience4j.ratelimiter:
   configs:
     default:
